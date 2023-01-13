@@ -18,9 +18,10 @@ This is the capstone project for my bachelor's degree in electrical engineering.
 # Definitions and Acronyms
 Most of these are generic DSP terms, but they have been repeated here for convenience and to comment on how they will be applied to this project.
 - UE-DEP 
-  - **U**ser **E**extensible -**D**igital **E**ffects **P**edal.
+  - **U**ser **E**xtensible-**D**igital **E**ffects **P**edal.
   - Tentatively pronounced "yoo dehp"
-  - Name of this project and its Git repo. 
+  - Name of this project and its Git repo.
+<!-- Grammatically, it should be User**-**Extensible Digital Effects Pedal, or U-EDEP, but then we would lose the pronunciation suggested by the UE-DEP acronym. -->
 - DSP
   - digital signal processing
   - In this project, the DSP will mostly be audio signal processing where the signal is assumed to have negligible bandwidth below 20Hz and above 20kHz.
