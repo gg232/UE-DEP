@@ -24,7 +24,7 @@ Most of these are generic DSP terms, but they have been repeated here for conven
 <!-- Grammatically, it should be User**-**Extensible Digital Effects Pedal, or U-EDEP, but then we would lose the pronunciation suggested by the UE-DEP acronym. -->
 - DSP
   - digital signal processing
-  - In this project, the DSP will mostly be audio signal processing where the signal is assumed to have negligible bandwidth below 20Hz and above 20kHz.
+  - In this project, the DSP will mostly be one-dimensional audio signal processing where the signal is assumed to have negligible bandwidth below 20Hz and above 20kHz.
 <!-- For now, I am assuming that the main input type is electric guitar or *any signal derived from it.* 
 For example, a guitar playing its lowest note followed by a heavy distortion pedal may very well have non-negligible signal energy around 8kHz, far higher than the fundamental.
 Such a use case is very practical and likely. For example, a user might choose to replace a speaker cabinet for an
