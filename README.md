@@ -12,7 +12,8 @@ This is the capstone project for my bachelor's degree in electrical engineering.
   - Utilize *free* and *open source* software as much as possible
   - Create a platform that facilitates the development of original audio processing software 
   - Must be, "out of the box", capable of running a large subset of audio plugins
-  - Must also be capable of extension by the user to use original algorithms or extraneous programs to add functionality to their device 
+  - Must also be capable of extension by the user to use original algorithms or extraneous programs to add functionality to their device
+    - Practically, this means making sure that there are no obstacles for user to write and compile code.
   - Towards this end, all my schematics and necessary code will be licensed under an appropriate FOSS license 
 
 # Definitions and Acronyms
