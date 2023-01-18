@@ -32,6 +32,7 @@ Such a use case is very practical and likely. For example, a user might choose t
 impulse response plugin for recording, because it's so much easier to set up compared to micing up a cabinet. -->
 - Discrete time
   - Used to describe a signal that is only defined for integer time values or at times t = nT, where T is a fixed sample rate and n is any integer.
+  - Uniform sampling is assumed 
 - Digital
   - Used to describe a signal that is Discrete in both time and *allowed values.* The latter is typically expressed by saying the signal is "quantized".
   - All audio signals are represented on computers as digital signals where the allowed values are quantized to be one of 2<sup>N</sup> values, where N is the bit depth (usually 16, 24, or 32).
