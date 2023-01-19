@@ -1083,13 +1083,432 @@ This appendix lists the definitions of jargon, what any acronyms or shorthand
  document.
 \end_layout
 
-\begin_layout Standard
-Many of these definitions have had books written about them, and it would
- be fruitless and silly to write a new one here.
- Thus, these definitions will be brief, and cite references for further
- reading as I am aware of them.
+\begin_layout Itemize
+UE-DEP
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+U
+\series default
+ser Extensible-
+\series bold
+D
+\series default
+igital 
+\series bold
+E
+\series default
+ffects 
+\series bold
+P
+\series default
+edal.
+ 
+\end_layout
+
+\begin_layout Itemize
+Tentatively pronounced "yoo dehp"
+\end_layout
+
+\begin_layout Itemize
+Name of this project and its GitHub repo.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+DSP
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+digital signal processing
+\end_layout
+
+\begin_layout Itemize
+In this project, the DSP will mostly be one-dimensional audio signal processing
+ where the signal is assumed to have negligible bandwidth below 20Hz and
+ above 20kHz.
+ 
+\end_layout
+
+\begin_layout Itemize
+I am assuming that the main input type is electric guitar or *any signal
+ derived from it.* 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Discrete time
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Used to describe a signal that is only defined for integer time values or
+ at times 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+ where 
+\begin_inset Formula $n$
+\end_inset
+
+ is any integer.
+\end_layout
+
+\begin_layout Itemize
+Uniform sampling is assumed throughout the project.
+ Therefore, 
+\begin_inset Formula $t_{n}=nT$
+\end_inset
+
+ where 
+\begin_inset Formula $T=\frac{1}{f_{s}}$
+\end_inset
+
+ is a fixed sample rate and 
+\begin_inset Formula $f_{s}$
+\end_inset
+
+ is the sample frequency.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Digital 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Used to describe a signal that is Discrete in both time and *allowed values.*
+ The latter is typically expressed by saying the signal is "quantized".
+ 
+\end_layout
+
+\begin_layout Itemize
+All audio signals are represented on computers as digital signals where
+ the allowed values are quantized to be one of 
+\begin_inset Formula $2^{N}$
+\end_inset
+
+ values, where N is the bit depth (usually 16, 24, or 32).
+\end_layout
+
+\begin_layout Itemize
+A control history of the on-off state of a push-button switch is represented
+ as a digital signal where the allowed values are 1 or 0; or, the signal
+ can be one of 
+\begin_inset Formula $2^{1}=2$
+\end_inset
+
+ values, which can be represented with 1 bit.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bit depth
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The number of bits needed to express all the possible amplitude levels a
+ digital signal is allowed to be.
+ For example, if a signal can be one of 
+\begin_inset Formula $2^{6}=64$
+\end_inset
+
+ values, then the bit depth is 6 bits.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sample frequency
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The number of times a waveform is sampled per second
+\end_layout
+
+\begin_layout Itemize
+The sample frequency must be at least twice the highest expected frequency
+ in the waveform.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+RPi 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Raspberry Pi
+\end_layout
+
+\begin_layout Itemize
+Although in my project I will be using the Raspberry Pi 4, the hardware
+ schematics should work for any microcontroller with i2S capability, 3V3
+ logic, and possibly control pin remappings.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+OS 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Operating system
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Real-time
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+[Firm real-time](https://en.wikipedia.org/wiki/Real-time_computing#Criteria_for_re
+al-time_computing)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+FOSS 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+free and open source software using the 
+\begin_inset CommandInset href
+LatexCommand href
+name "GNU Free Software Definition"
+target "https://www.gnu.org/philosophy/free-sw.html.en#fs-definition"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+DAW
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A digital audio workstation (DAW) is a class of software that allows a user
+ to manipulate digital audio streams, usually using real-time digital effects.
+\end_layout
+
+\begin_layout Itemize
+Examples:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ProTools
+\end_layout
+
+\begin_layout Itemize
+REAPER
+\end_layout
+
+\begin_layout Itemize
+Ardour
+\end_layout
+
+\begin_layout Itemize
+Logic
+\end_layout
+
+\begin_layout Itemize
+Garageband
+\end_layout
+
+\begin_layout Itemize
+FL Studio
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Audio plugin
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A piece of software designed to extend the signal processing functionality
+ of a DAW.
+\end_layout
+
+\begin_layout Itemize
+Examples
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+SimpleEQ - open-source linear equalizer that I wrote
+\end_layout
+
+\begin_layout Itemize
+ReaEQ - REAPER's stock linear EQ, also available as a free plugin for any
+ DAW
+\end_layout
+
+\begin_layout Itemize
+Ignite Amps Emissary - A simulation of a high-gain amplifier based on a
+ real valve amplifier.
+ The real amplifier was only ever manufactured for the customer who ordered
+ it, whereas the plugin is free to download from their website.
+\end_layout
+
+\begin_layout Itemize
+Rosen Digital's Pulse - An impulse response convolution plugin designed
+ to simulate the modified frequency response imparted to a guitar signal
+ by the combination of the speaker, microphone, mic placement, and room.
+ Practically, this allows a guitarist to record electric guitar parts without
+ micing ujp a cabinet.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Plugin host 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Any program capable of running at least one format of standard audio plugins
+\end_layout
+
+\begin_layout Itemize
+For the purpose of this project, an "audio plugin host" will refer to a
+ DAW that is not necessarily designed to permanently record input or output
+ to a file.
+ 
+\end_layout
+
+\begin_layout Itemize
+Examples
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+VSTHost
+\end_layout
+
+\begin_layout Itemize
+Nanohost
+\end_layout
+
+\begin_layout Itemize
+Carla
+\end_layout
+
+\begin_layout Itemize
+JUCE's AudioPluginHost
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Cabinet
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Technically, the cabinet is the box that holds a speaker in place
+\end_layout
+
+\begin_layout Itemize
+Musicians typically refer to the entire speaker-cabinet assembly as a 
+\begin_inset Quotes eld
+\end_inset
+
+cabinet
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Guitar cabinets have a tailored frequency response motivated by the fact
+ that guitar is considered a 
+\begin_inset Quotes eld
+\end_inset
+
+mid-range
+\begin_inset Quotes erd
+\end_inset
+
+ instrument.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Micing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pronounced 
+\begin_inset Quotes eld
+\end_inset
+
+mike-ing
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The process of strategically placing a microphone in front of a sound source
+ to record it
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+JUCE
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Jules' Utility Class Extensions
+\end_layout
+
+\begin_layout Itemize
+A cross-platform C++ application framework
+\end_layout
+
+\begin_layout Itemize
+Allows programmers to write code once and compile anywhere
+\end_layout
+
+\begin_layout Itemize
+Includes extensive support for audio plugins
+\end_layout
+
+\begin_layout Itemize
+JUCE plugins tend to 
+\begin_inset Quotes eld
+\end_inset
+
+play nice
+\begin_inset Quotes erd
+\end_inset
+
+ on multiple platforms
+\end_layout
+
+\end_deeper
 \begin_layout Chapter
 Subsystem Design Documents
 \end_layout
@@ -1131,7 +1550,399 @@ linear system of differential equations
 
  with the Laplace and Fourier transform methods, as well as an understanding
  of basic electronic circuits for small signals.
+\end_layout
+
+\begin_layout Standard
+The approach here is based on the premise that the subsystems are electrically
+ and logically distinct.
+ For example, the input high-pass filter operates on a voltage and outputs
+ a filtered voltage.
+ Its design is independent from the input low-pass filter and preamp.
+ For each of these circuits, a Thevenin or Norton equivalent circuit can
+ be used at the input and a generic load impedance at the output to design
+ the circuit.
+\end_layout
+
+\begin_layout Standard
+Particularly, the other components do not depend meaningfully on the fact
+ that the DSP unit is a Raspberry Pi.
+ Any microcomputer or microcontroller that has i2s capability and 3V3 logic
+ can be substituted into these circuits 
+\emph on
+without modifying the circuit
+\emph default
+.
+ In this Appendix, the DSP Unit will be treated as a generic integrated
+ circuit, except in its dedicated subsection (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DSP-unit"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The block diagram has been reproduced below:
+\end_layout
+
+\begin_layout Standard
+[insert BD]
+\end_layout
+
+\begin_layout Section
+The audio signal chain and bypass
+\end_layout
+
+\begin_layout Standard
+The audio signal chain refers to the linear path an audio signal will take
+ assuming the pedal is not bypassed.
+ The bypass circuit takes the pedal 
+\begin_inset Quotes eld
+\end_inset
+
+out of the loop.
+\begin_inset Quotes erd
+\end_inset
+
+ It is operated by a stomp-style toggle switch.
+\end_layout
+
+\begin_layout Subsubsection
+Audio Input Connectors
+\end_layout
+
+\begin_layout Paragraph
+Preamp
+\end_layout
+
+\begin_layout Standard
+The basis of the preamp will be a standard non-inverting amplifier, where
+ the feedback resistor will be partially replaced by a potentiometer that
+ can be adjusted by the performer.
+ The gain range will be 0dB
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+As a reminder, 0dB translates to no gain.
  
+\emph on
+This does not mean that the signal is muted.
+
+\emph default
+ The signal will simply propagate at whatever level it left the guitar.
+\end_layout
+
+\end_inset
+
+ at its lowest to 30dB at its greatest.
+ Most guitars have a volume knob
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Technically, one could build a guitar without one.
+ Otherwise, all guitars made for sale have volume knobs.
+\end_layout
+
+\end_inset
+
+, so attenuating the signal is possible from there.
+ Muting the signal should be done with the bypass switch.
+\end_layout
+
+\begin_layout Standard
+Because the ADC is single-ended, the preamp also needs to bias the incoming
+ audio signal.
+ Audio signals can be positive or negative.
+ If a negative signal is sent to the ADC, it will off the negative swing.
+ This will be perceived as audible distortion.
+\end_layout
+
+\begin_layout Standard
+Lastly, the input impedance of this stage will be the impedance 
+\begin_inset Quotes eld
+\end_inset
+
+seen
+\begin_inset Quotes erd
+\end_inset
+
+ by the guitar.
+ Input impedance affects how the guitar 
+\begin_inset Quotes eld
+\end_inset
+
+feels.
+\begin_inset Quotes erd
+\end_inset
+
+ More accurately, the guitar's circuit interacts with the circuitry of the
+ other signal processing elements.
+ This interaction can be heard by the guitarist in the way their guitar
+ sounds and how it changes with respect to changes in playing technique.
+\end_layout
+
+\begin_layout Paragraph
+High Pass
+\end_layout
+
+\begin_layout Standard
+The purpose of the high-pass filter is to remove low-frequency garbage that
+ corrupts the audible part of the signal with worthless signal energy.
+ Practically, a high-pass-filtered signal sounds clearer and better defined.
+ Additionally, guitar speakers can be permanently damaged by large low frequency
+ excursions.
+ This is especially a problem for bassists playing through guitar speaker
+ cabinets.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Low Pass
+\end_layout
+
+\begin_layout Standard
+The purpose of the low-pass filter is to enforce Shannon's sampling theorem
+ to avoid audible distortion caused by aliasing.
+ Practically, this means attenuating out-of-band frequencies to below the
+ size of 1 LSB (least significant bit) for the ADC.
+\end_layout
+
+\begin_layout Standard
+The fundamental note of a guitar signal will not exceed about 4kHz, and
+ even this is a high estimate.
+ That being said, it is plausible that a guitarist might use an analog distortio
+n pedal 
+\emph on
+in front
+\emph default
+ of the pedal.
+ Typically, a distortion pedal adds, besides even and odd order harmonics,
+ a bunch of crossover terms.
+ [Add RS-MET proof] This results in a noisy spectrum for almost all notes
+ on the guitar.
+ Thus, the pedal needs to allow the transmission of all the frequencies
+ that are required to retain the sound of an average distortion pedal.
+\end_layout
+
+\begin_layout Standard
+The answer to this question admittedly begins with a subjective ballpark
+ judgement of the required frequency response by applying a low-pass to
+ various distortion effects and seeing how low I can set the frequency before
+ losing important qualities of the distortion.
+ What I came up with is that the cutoff can be set around 10kHz.
+ The best explanation I can offer relies on the fact that 
+\begin_inset Quotes eld
+\end_inset
+
+Presence
+\begin_inset Quotes erd
+\end_inset
+
+ controls on high-gain guitar amplifiers are typically analog filters that
+ cut or boost high frequencies with a resonant peak (or dip) between 5kHz-10kHz.
+ 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Incidentally, this is typically where I and most other audio mixers place
+ a software high-pass when processing high-gain guitar.
+ Audio engineers typically learn how to set high-passes and other filters
+ 
+\begin_inset Quotes eld
+\end_inset
+
+by ear
+\begin_inset Quotes erd
+\end_inset
+
+ directly in the digital domain with an audio plugin.
+ Even with my signals and systems knowledge, I find this to be the most
+ reliable way to determine a cutoff frequency (at least for audible signals).
+\end_layout
+
+\end_inset
+
+ From my experience of dialing in dozens of high-gain amplifiers and distortion
+ pedals, I have learned that correctly setting the Presence control (when
+ it is there) is one of the most important ways for a guitar track to cut
+ through the mix.
+ In a typical rock or metal mix, this frequency band is sparsely populated
+ other than the band of guitar distortion affected by the Presence control.
+ My hypothesis is that this frequency band is where listeners (subconsciously)
+ 
+\begin_inset Quotes eld
+\end_inset
+
+look
+\begin_inset Quotes erd
+\end_inset
+
+ for distorted guitar when more important frequency bands are masked by
+ other instruments.
+\end_layout
+
+\begin_layout Paragraph
+ADC
+\end_layout
+
+\begin_layout Standard
+The ADC is a breakout board based on the TI PCM1808 integrated circuit.
+ The PCM1808 is an oversampling converter that uses a 
+\begin_inset Formula $\Sigma\Delta$
+\end_inset
+
+ architecture.
+ [Explain that].
+ It converts audio data to serialized binary using the i2s protocol.
+\end_layout
+
+\begin_layout Subsubsection
+DSP unit
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:DSP-unit"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The DSP unit is the Raspberry Pi 4 either running a plugin host or send
+ input to output (e.g., implementing the identity system).
+ The Pi is unmodified, and it is running 64-bit RPi OS.
+\end_layout
+
+\begin_layout Subsubsection
+Audio Output
+\end_layout
+
+\begin_layout Paragraph
+DAC+Headphone Amplifier
+\end_layout
+
+\begin_layout Standard
+The DAC+Amplifier is a breakout board based on the TI PCM5102 integrated
+ circuit.
+ The PCM5102 converts i2s binary signals to a continuous audio waveform.
+ There is a headphone amplifier built into the board.
+ The schematic for the breakout board has been reproduced below.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Preamp
+\end_layout
+
+\begin_layout Standard
+The basis of the preamp will be a standard non-inverting amplifier, where
+ the feedback resistor will be partially replaced by a potentiometer that
+ can be adjusted by the performer.
+ 
+\end_layout
+
+\begin_layout Paragraph
+High Pass
+\end_layout
+
+\begin_layout Standard
+The purpose of the high-pass filter is similar to the input high-pass.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Low Pass
+\end_layout
+
+\begin_layout Standard
+The purpose of the low-pass filter is to ensure that inaudible frequencies
+ do not take up useless signal energy or possibly affect other digital gear
+ down the line.
+ This time, the filter cutoff really needs to be quite close to 20kHz, because
+ it is absolutely plausible that a guitarist might either pitch-shift their
+ guitar or add heavy harmonic distoriton in the DSP unit.
+\end_layout
+
+\begin_layout Standard
+Additionally, this circuit will set the output impedance seen by an amplifier,
+ guitar pedal, or audio interface.
+ Consequently, it must lie within a interval of 
+\begin_inset Quotes eld
+\end_inset
+
+expected
+\begin_inset Quotes erd
+\end_inset
+
+ values that are 
+\begin_inset Quotes eld
+\end_inset
+
+much smaller than
+\begin_inset Quotes erd
+\end_inset
+
+ the input impedance of subsequent stages.
+\end_layout
+
+\begin_layout Section
+The control bank
+\end_layout
+
+\begin_layout Standard
+The control bank is the set of external controls that can be mapped to plugin
+ parameters.
+ Each subcomponent in the bank is independent from the others.
+\end_layout
+
+\begin_layout Subsection
+Expression Pedal Input
+\end_layout
+
+\begin_layout Standard
+An expression pedal is a variable voltage divider where the ratio is set
+ by the angle of the rocker.
+ Expression pedals are used by performers to modulate pedal parameters while
+ their hands are occupied playing guitar.
+ To interface with the DSP unit, the voltage at the divider needs to be
+ converted to a number within a range.
+ This is accomplished with a [insert other ADC here].
+ This converts a slowly-changing signal to an integer transmitted as a serialize
+d binary signal with the i2C protocol.
+\end_layout
+
+\begin_layout Subsection
+Rotary Encoder
+\end_layout
+
+\begin_layout Standard
+The rotary encoder will be simply implemented with a ready-made 24-position
+ rotary encoder.
+\end_layout
+
+\begin_layout Subsection
+Push button
+\end_layout
+
+\begin_layout Standard
+The push button will be implemented with an ordinary push-button switch
+ and a pullup resistor in the following configuration:
+\end_layout
+
+\begin_layout Section
+The touch screen
+\end_layout
+
+\begin_layout Section
+Power distribution
 \end_layout
 
 \begin_layout Chapter
@@ -1366,14 +2177,45 @@ c" timbre for small parts of the song.
 \begin_layout Standard
 My concept is to create a dedicated device to process guitar signals using
  existing audio plugins for live usage.
- One goal is to allow a musician to drop their signal chain into my box
- and play through it in real time.
- The other is to create a platform where makers can write and test audio
- DSP algorithms in context with the rest of their hardware signal chain.
+ One goal is to allow a musician to 
+\begin_inset Quotes eld
+\end_inset
+
+drag-and-drop
+\begin_inset Quotes erd
+\end_inset
+
+ their signal chain into my box and play through it in real time.
+ Another is to create a platform where makers can write and test audio DSP
+ algorithms in context with the rest of their hardware signal chain.
 \end_layout
 
 \begin_layout Section
 Subjectivism in digital audio
+\end_layout
+
+\begin_layout Standard
+The thesis of this section is that while my pedal should be able to produce
+ 
+\begin_inset Quotes eld
+\end_inset
+
+correct
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+good-sounding
+\begin_inset Quotes erd
+\end_inset
+
+ outputs in a way that can be emprically measured, there will always be
+ a class of people who intrinsically reject digital audio technology and
+ cannot be convinced (even with evidence) that my pedal can help them.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1555,7 +2397,7 @@ For musicians who consider the authenticity of their analog gear to be a
 
 \begin_layout Standard
 For musicians who can at least tolerate a part of their signal chain being
- digital, Shannon's (uniform) sampling theorem provides most of the answer.
+ digital, Shannon's sampling theorem provides most of the answer.
  For linear processing, sampling at 44.1kHz ensures that the entire audible
  range is captured with about 2kHz as a buffer.
  For nonlinear processing, digital oversampling can be (and usually is)
@@ -1651,7 +2493,7 @@ d, because I wrote it.
  target operating system and architecture.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsubsection
 Principle of operation
 \end_layout
 
@@ -1756,6 +2598,18 @@ The program structure, where audio processing and user control are handled
  generate template of this structure.
  Consequently, these are the functions a plugin host, and consequently my
  hardware platform, needs to be capable of supporting.
+\end_layout
+
+\begin_layout Section
+What exactly is a 
+\emph on
+VST
+\emph default
+ Plugin?
+\end_layout
+
+\begin_layout Standard
+[Explain]
 \end_layout
 
 \begin_layout Section
@@ -2047,7 +2901,7 @@ For this project, the important development is the release of the Carla
 \end_layout
 
 \begin_layout Section
-How Software Works
+How Computer Programs Work
 \end_layout
 
 \begin_layout Standard
