@@ -1623,6 +1623,13 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
+The circuit equations will be derived with generic variables to exhibit
+ how the values of each parameter affect the circuit, then solved analytically
+ where it is feasible.
+ Then, the chosen values will be plugged into the expression.
+\end_layout
+
+\begin_layout Standard
 The block diagram has been reproduced below:
 \end_layout
 
@@ -1903,7 +1910,8 @@ High Pass
 
 \begin_layout Standard
 The purpose of the high-pass filter is similar to the input high-pass.
- 
+ According to its datasheet, the ADC can accept signals between 0V and 3.1V.
+ For the filter stages, let's 
 \end_layout
 
 \begin_layout Paragraph
@@ -1939,6 +1947,98 @@ much smaller than
 \end_inset
 
  the input impedance of subsequent stages.
+\end_layout
+
+\begin_layout Section
+The MIDI signal chain
+\end_layout
+
+\begin_layout Standard
+To send and receive MIDI data to test the functionality, I will use the
+ MIDI input and output on my FocusRite Scarlett USB Audio Interface.
+\end_layout
+
+\begin_layout Standard
+As an alternative to hard-wired MIDI, there exist controllers that utilize
+ 
+\emph on
+MIDI over USB
+\emph default
+.
+ These controllers are typically 
+\begin_inset Quotes eld
+\end_inset
+
+plug and play.
+\begin_inset Quotes erd
+\end_inset
+
+ Other than pointing the audio host to the controller, no further software
+ coniguration is needed.
+\end_layout
+
+\begin_layout Subsection
+Input
+\end_layout
+
+\begin_layout Standard
+The input circuit is based on the one detailed in the original MIDI 1.0 Standard
+ updated with a better optoisolator.
+ The important parameter of the optoisolator in this circuit is how quickly
+ it can change.
+ Thus, it can be easily switched for an otherwise generic 
+\begin_inset Quotes eld
+\end_inset
+
+fast
+\begin_inset Quotes erd
+\end_inset
+
+ optoisolator.
+ Modern manufacturers now use the [insert optoisolator].
+ To conform to mainstream industry practice, my design uses the same component.
+\end_layout
+
+\begin_layout Subsection
+DSP Unit
+\end_layout
+
+\begin_layout Standard
+The DSP Unit is still the same Pi as the one in the audio signal chain,
+ as indicated in the block diagram.
+\end_layout
+
+\begin_layout Standard
+To actually use or modify MIDI data, the MIDI serial signal needs to be
+ received and stored into the Pi's GPIO input.
+ Similarly, for MIDI output, the Pi must send MIDI notes as serialized data.
+ Once the hardware is properly hooked up, JACK will be configured to 
+\begin_inset Quotes eld
+\end_inset
+
+see
+\begin_inset Quotes erd
+\end_inset
+
+ the MIDI I/O.
+ Then, Carla should be able to 
+\begin_inset Quotes eld
+\end_inset
+
+see
+\begin_inset Quotes erd
+\end_inset
+
+ the MIDI input 
+\end_layout
+
+\begin_layout Subsection
+Output
+\end_layout
+
+\begin_layout Standard
+The output circuit is based on the one detailed in the original MIDI 1.0
+ Standard.
 \end_layout
 
 \begin_layout Section
@@ -1991,6 +2091,81 @@ The touch screen
 
 \begin_layout Section
 Power distribution
+\end_layout
+
+\begin_layout Standard
+Overall power will be supplied by a generic 9V 72W power supply.
+ (My particular supply has an adjustable voltage, but if any more units
+ are produced, they would use a generic 9V supply.) This power will be stepped
+ down to 5V with a breakout board.
+ The board accepts bare wires or a barrel plug, and it outputs 5V power
+ through USB.
+ This will power the Pi through its USB port.
+ Although it is possible to power the Pi in other ways, the documentation
+ states that the 
+\emph on
+only
+\emph default
+ 
+\begin_inset Quotes eld
+\end_inset
+
+safe
+\begin_inset Quotes erd
+\end_inset
+
+ way to power the Pi is through its USB port with standard 5V power.
+\end_layout
+
+\begin_layout Subsection
+Audio Op-amps
+\end_layout
+
+\begin_layout Standard
+According to their datasheets, the NE5532 op-amps should 
+\begin_inset Quotes eld
+\end_inset
+
+work fine
+\begin_inset Quotes erd
+\end_inset
+
+ when powered by a single 5V supply.
+ However, according to tests performed by Douglas Self (self), 5V is actually
+ the practical minimum.
+ In order to obtain more linear amplification and filtering, the design
+ will be powered with a single 
+\emph on
+9V
+\emph default
+ source.
+ Practically, this means that the op-amps will be powered directly from
+ the generic power supply.
+\end_layout
+
+\begin_layout Standard
+Additionally, a bias voltage needs to be provided for each op-amp stage.
+ Details of the biasing circuit are in each filter section.
+ Because the filters share a common bias voltage, the circuit to establish
+ and maintain that bias voltage will be discussed here.
+ Any voltage that biases more than one gain stage will utilize the following
+ circuit.
+\end_layout
+
+\begin_layout Standard
+The circuit is basically a resistive voltage divider followed by an op-amp
+ voltage follower.
+ The op-amp was chosen because of its high current output capability.
+ The other specs are 
+\begin_inset Quotes eld
+\end_inset
+
+middle of the road,
+\begin_inset Quotes erd
+\end_inset
+
+ especially its noise voltage specification.
+ 
 \end_layout
 
 \begin_layout Chapter
@@ -3785,7 +3960,6 @@ The hypothetical commands `show w' and `show c' should show the appropriate
 \end_layout
 
 \begin_layout Subsection
-
 GNU LGPL 3.0
 \end_layout
 
