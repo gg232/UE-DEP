@@ -8,6 +8,9 @@
 \begin_preamble
 \pagenumbering{roman}
 \usepackage{tocbibind}
+
+
+\usepackage{upgreek} 
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -153,6 +156,186 @@ abstractname}
 \end_inset
 
 
+\begin_inset FormulaMacro
+\newcommand{\DD}{\textrm{d}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\diff}[1]{\frac{\textrm{d}}{\textrm{d}#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pdiff}[1]{\frac{\partial}{\partial#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\BS}[1]{\boldsymbol{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\phasor}[1]{\widetilde{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ddt}{\frac{\textrm{d}}{\textrm{d}t}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\intOVER}[3]{\underset{#1}{\int}#2\textrm{d}#3}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\intRANGE}[4]{\int\limits _{#1}^{#2}#3\textrm{d}#4}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sumOVER}[2]{\underset{#2}{\sum}#1}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ohm}{\textrm{\ensuremath{\Omega}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ohms}{\textrm{\ensuremath{\Omega}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\micro}{\upmu}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\milli}{\textrm{m}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\kilo}{\textrm{k}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\giga}{\mathrm{G}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nano}{\mathrm{n}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pico}{\textrm{p}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\femto}{\mathrm{f}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\HZ}{\textrm{Hz}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\hertz}{\textrm{Hz}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\unit}[1]{\textrm{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\amps}{\textrm{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\volts}{\textrm{V}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\watts}{\textrm{W}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\amp}{\textrm{A}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\volt}{\textrm{V}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\watt}{\textrm{W}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\EE}[1]{\times10^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\EEE}[1]{\cdot10^{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\farads}{\textrm{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\farad}{\textrm{F}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\henry}{\textrm{H}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\henries}{\textrm{H}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\VperV}{\nicefrac{\textrm{V}}{\textrm{V}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\dB}{\textrm{dB}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\goesto}{\rightarrow}
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -175,6 +358,35 @@ why
 .
  The Appendices are probably not necessary from a technical perspective.
  
+\end_layout
+
+\begin_layout Standard
+I have written about the design and approach for these circuits in 
+\emph on
+excruciating
+\emph default
+ detail, primarily as a favor for my future self.
+ Almost all linear circuit analysis will be performed using the Laplace
+ transform method by writing the circuit equations 
+\emph on
+directly
+\emph default
+ in the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $s$
+\end_inset
+
+-domain
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -1858,6 +2070,170 @@ play nice
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+Laplace transform
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The result of the transformation 
+\begin_inset Formula $f\left(t\right)\mapsto F\left(s\right)=\lim\limits _{b\goesto0^{+}}{\displaystyle \int\limits _{-b}^{\infty}f\left(t\right)e^{-st}\DD t}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This integral must converge in some non-empty region 
+\begin_inset Formula $\textrm{Re}\left(s\right)>\sigma_{0}$
+\end_inset
+
+, the region of (conditional) convergence (ROC)
+\end_layout
+
+\begin_layout Itemize
+Only the unilateral transform is used [e.g., the Laplace transform can't 
+\begin_inset Quotes eld
+\end_inset
+
+see
+\begin_inset Quotes erd
+\end_inset
+
+ negative times 
+\begin_inset Formula $\left(t<0\right)$
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Itemize
+However, the object of interest is 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+, e.g.
+ the function one gets by taking the domain of 
+\begin_inset Formula $F$
+\end_inset
+
+ to be the 
+\emph on
+entire
+\emph default
+ complex plane
+\end_layout
+
+\begin_layout Itemize
+Because the transform is linear and the circuits linear or approximately
+ so, it is prudent to memorize a set of function-transform pairs
+\end_layout
+
+\begin_layout Itemize
+A table of basic transforms will be linked here.
+\end_layout
+
+\begin_layout Itemize
+Under 
+\begin_inset Quotes eld
+\end_inset
+
+weak
+\begin_inset Quotes erd
+\end_inset
+
+ assumptions (sufficient: imaginary axis is in the ROC), 
+\begin_inset Formula $\left.H\left(s\right)\right|_{s=j\omega}=\mathcal{F}\left(h\left(t\right)\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+is the Fourier transform of 
+\begin_inset Formula $h$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $h\left(t\right)$
+\end_inset
+
+represents a system's impulse response, 
+\begin_inset Formula $\left|\mathcal{F}\left(h\right)\right|$
+\end_inset
+
+ is the frequency response of the system, e.g.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+how it sounds
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Any stable (linear) filter or passive circuit has a ROC that includes the
+ imaginary axis, so the frequency response can always be derived from the
+ Laplace transform
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Input impedance
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Impedance in general = a measure of how a material or systems resists the
+ flow of electricity
+\end_layout
+
+\begin_layout Itemize
+For a two-port circuit, the input impedance function will be 
+\begin_inset Formula $Z\left(s\right)=\left.\frac{V_{\textrm{in}}\left(s\right)}{I_{\textrm{in}}\left(s\right)}\right|_{I_{\textrm{out}}=0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The DC input impedance will be 
+\begin_inset Formula $\lim\limits _{z\goesto0^{+}}Z\left(s\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The input impedance at any (real) frequency
+\begin_inset Formula $f$
+\end_inset
+
+ will be 
+\begin_inset Formula $\left|Z\left(j2\pi f\right)\right|$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Output impedance = 
+\begin_inset Formula $Z_{\textrm{out}}\left(s\right)=\left.\frac{V_{\textrm{out}}\left(s\right)}{I_{\textrm{out}}\left(s\right)}\right|_{I_{in}=0}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Chapter
 Subsystem Design Documents
 \end_layout
@@ -1940,6 +2316,9 @@ The circuit equations will be derived with generic variables to exhibit
  how the values of each parameter affect the circuit, then solved analytically
  where it is feasible.
  Then, the chosen values will be plugged into the expression.
+ Signals and systems are assumed to have Laplace transforms in this analysis.
+ The first line of any derivation will be written with all the arguments,
+ but subsequent lines will omit them to make the algebra easier.
 \end_layout
 
 \begin_layout Standard
