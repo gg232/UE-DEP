@@ -96,14 +96,10 @@
 
 \begin_layout Title
 Updated Project Proposal
-\begin_inset Newline newline
-\end_inset
-
-User-Extensible Digital Effects Pedal
 \end_layout
 
 \begin_layout Author
-Group 31: Gerard Gallagher
+Gerard Gallagher
 \end_layout
 
 \begin_layout Date
@@ -931,34 +927,9 @@ The DAC will be a breakout board based on the Texas Instruments PCM5102.
  The sellers of the board were kind enough to offer a schematic of what
  is on their board.
  This schematic is pasted below.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename images/dac board schematic.png
-	width 3in
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The important things to note are the output high-pass filter and the onboard
+ The important things to note are the output high-pass filter and the onboard
  headphone amplifier.
- The cutoff for their first-order high-pass
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-The capacitor and resistor subscripts are with respect to this diagram only.
- Also, both left and right channels have one filter each with the same circuits.
-\end_layout
-
-\end_inset
-
- is 
+ The cutoff for their highpass is 
 \begin_inset Formula $f=\frac{1}{2\pi RC}$
 \end_inset
 
@@ -980,13 +951,18 @@ The capacitor and resistor subscripts are with respect to this diagram only.
 \begin_inset Formula $154\text{kHz}\times2=308\text{kHz}$
 \end_inset
 
-, this filter does little to help with aliasing.
+, this filter does nothing to help with aliasing.
  Therefore, an additional high-pass is needed.
 \end_layout
 
 \begin_layout Standard
-The headphone amplifier works out of the box and interfaces with the Pi
- without a fuss so far.
+\begin_inset Graphics
+	filename images/dac board schematic.png
+	width 3in
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
